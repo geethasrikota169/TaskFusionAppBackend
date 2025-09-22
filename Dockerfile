@@ -21,9 +21,5 @@ RUN ./mvnw package -DskipTests
 ENV PORT=10000
 EXPOSE 10000
 
-# Command to run the executable
-# This command also explicitly sets the server port and database URL from environment variables
-CMD ["java", "-jar", \
-     "-Dserver.port=${PORT}", \
-     "-Dspring.datasource.url=${DATABASE_URL}", \
-     "target/FSDproject-0.0.1-SNAPSHOT.jar"]
+# Command to run the executable using shell form to ensure ENV VAR substitution
+CMD java -Dserver.port=${PORT} -Dspring.datasource.url=${DATABASE_URL} -jar target/FSDproject-0.0.1-SNAPSHOT.jar
