@@ -22,4 +22,4 @@ EXPOSE 10000
 
 # Command to run the executable
 # IMPORTANT: Double-check that your JAR file name in /target matches this!
-CMD ["java", "-jar", "target/FSDProjectCompleted-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "target/FSDproject-0.0.1-SNAPSHOT.jar"]
