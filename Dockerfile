@@ -17,9 +17,13 @@ COPY src ./src
 # Package the application
 RUN ./mvnw package -DskipTests
 
-# Your app will run on port 10000, which Render provides
+# Tell Render that the application will listen on port 10000
+ENV PORT=10000
 EXPOSE 10000
 
 # Command to run the executable
-# IMPORTANT: Double-check that your JAR file name in /target matches this!
-CMD ["java", "-jar", "target/FSDproject-0.0.1-SNAPSHOT.jar"]
+# This command also explicitly sets the server port and database URL from environment variables
+CMD ["java", "-jar", \
+     "-Dserver.port=${PORT}", \
+     "-Dspring.datasource.url=${DATABASE_URL}", \
+     "target/FSDproject-0.0.1-SNAPSHOT.jar"]
